@@ -81,14 +81,14 @@ class _DetailViewState extends State<DetailView> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(80, 10, 80, 40),
+                padding: EdgeInsets.fromLTRB(25, 10, 25, 40),
                 decoration: BoxDecoration(
                   color: snow,
                 ),
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: widget.h.getHexIconListIn8hex(80),
                     ),
                     SizedBox(

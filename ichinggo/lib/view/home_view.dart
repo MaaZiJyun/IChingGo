@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ichinggo/component/icon_tile_widget.dart';
 import 'package:ichinggo/component/list.dart';
+import 'package:ichinggo/component/one_btn_dialog_widget.dart';
 import 'package:ichinggo/controller/hex_search.dart';
 import 'package:ichinggo/global/app_colors.dart';
 import 'package:ichinggo/global/app_icons.dart';
@@ -82,20 +83,21 @@ class _HomeViewState extends State<HomeView> {
   // Flash button reaction
   void pressFlash() {
     showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: Text('Help'),
-              content: Text(
-                  ('0 is represented negative;\n1 is represented positive.\n\nThe search bar only accept number 1 and 0.')),
-              actions: <Widget>[
-                new FlatButton(
-                  child: new Text("Okay"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            ));
+      context: context,
+      builder: (context) => OneBtnDialog(
+        dialogText:
+            '0 is represented negative;\n1 is represented positive.\n\nThe search bar only accept number 1 and 0.',
+        btnText: 'Okay',
+        dialogTextStyle: TextStyle(
+          color: coal,
+        ),
+        btnTextStyle: TextStyle(
+          color: PureBlu,
+        ),
+        btnBgColor: Colors.transparent,
+        dialogBgColor: snow,
+      ),
+    );
   }
 
   // Search Engine reaction
@@ -112,19 +114,20 @@ class _HomeViewState extends State<HomeView> {
       );
     } else {
       showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                content:
-                    Text(('There is no result as \"' + controller.text + '\"')),
-                actions: <Widget>[
-                  new FlatButton(
-                    child: new Text("Okay"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              ));
+        context: context,
+        builder: (context) => OneBtnDialog(
+          dialogText: 'There is no result as \"' + controller.text + '\"\nPlease try again :)',
+          btnText: 'Okay',
+          dialogTextStyle: TextStyle(
+            color: coal,
+          ),
+          btnTextStyle: TextStyle(
+            color: PureBlu,
+          ),
+          btnBgColor: Colors.transparent,
+          dialogBgColor: snow,
+        ),
+      );
     }
   }
 

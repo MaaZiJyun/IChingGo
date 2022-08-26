@@ -11,6 +11,7 @@ import 'package:ichinggo/global/app_icons.dart';
 import 'dart:math' as math;
 import 'package:ichinggo/global/app_vars.dart';
 import 'package:ichinggo/model/hexagram_model.dart';
+import 'package:ichinggo/view/analysis_view.dart';
 import 'package:ichinggo/view/detail_view.dart';
 
 class YallowView extends StatefulWidget {
@@ -161,19 +162,47 @@ class _YallowViewState extends State<YallowView> {
                   SizedBox(
                     height: 25,
                   ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     pressSearch(hex.getHexScript());
+                  //   },
+                  //   onLongPress: () {
+                  //     if (!mounted) return;
+                  //     setState(() {
+                  //       hex = Hexagram([2, 2, 2, 2, 2, 2]);
+                  //     });
+                  //   },
+                  //   child: Container(
+                  //     child: Column(
+                  //       children: [
+                  //         // Container(
+                  //         //   padding: EdgeInsets.symmetric(horizontal: 70),
+                  //         //   child: Row(
+                  //         //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //         //     children: hex.getHexIconList(25),
+                  //         //   ),
+                  //         // ),
+                  //         Container(
+                  //           child: Row(
+                  //             mainAxisAlignment: MainAxisAlignment.center,
+                  //             children: hex.getHexIconListIn8hex(80),
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   InkWell(
                     onTap: () {
-                      pressSearch(hex.getHexScript());
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AnalysisView(
+                            hex: hex,
+                          ),
+                        ),
+                      );
                     },
-                    child: Container(
-                      padding: EdgeInsets.all(30),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: hex.getHexIconList(25),
-                      ),
-                    ),
-                  ),
-                  InkWell(
                     onLongPress: () {
                       if (!mounted) return;
                       setState(() {
@@ -181,7 +210,7 @@ class _YallowViewState extends State<YallowView> {
                       });
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 25),
+                      padding: EdgeInsets.symmetric(vertical: 0),
                       child: Column(
                         children: [
                           Container(
@@ -206,18 +235,36 @@ class _YallowViewState extends State<YallowView> {
                       ),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      pressSearch(hex.getOpHexScript());
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(30),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: hex.getOpHexIconList(25),
-                      ),
-                    ),
-                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     pressSearch(hex.getOpHexScript());
+                  //   },
+                  //   onLongPress: () {
+                  //     if (!mounted) return;
+                  //     setState(() {
+                  //       hex = Hexagram([2, 2, 2, 2, 2, 2]);
+                  //     });
+                  //   },
+                  //   child: Container(
+                  //     child: Column(
+                  //       children: [
+                  //         Container(
+                  //           child: Row(
+                  //             mainAxisAlignment: MainAxisAlignment.center,
+                  //             children: hex.getOpHexIconListIn8hex(80),
+                  //           ),
+                  //         ),
+                  //         // Container(
+                  //         //   padding: EdgeInsets.symmetric(horizontal: 70),
+                  //         //   child: Row(
+                  //         //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //         //     children: hex.getOpHexIconList(25),
+                  //         //   ),
+                  //         // ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 25,
                   ),
@@ -227,55 +274,55 @@ class _YallowViewState extends State<YallowView> {
           : Center(
               child: wait
                   ? Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            iconLoading1,
-                            iconLoading2,
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            iconLoading3,
-                            iconLoading4,
-                          ],
-                        ),
-                        Text(
-                          'A new hexagram is generating',
-                          style: TextStyle(
-                            fontSize: 12,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              iconLoading1,
+                              iconLoading2,
+                            ],
                           ),
-                        ),
-                      ],
-                    ),
-                  )
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              iconLoading3,
+                              iconLoading4,
+                            ],
+                          ),
+                          Text(
+                            'A new hexagram is generating',
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   : Container(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
                             onTap: pressStart,
-                            borderRadius: BorderRadius.circular(100),
+                            borderRadius: BorderRadius.circular(80),
                             highlightColor: moonlight,
                             child: Container(
-                              padding: EdgeInsets.all(25),
+                              padding: EdgeInsets.all(20),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
+                                borderRadius: BorderRadius.circular(80),
                                 color: coal,
                               ),
                               child: Icon(
                                 Icons.power_settings_new,
                                 color: snow,
-                                size: 45,
+                                size: 40,
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 25,
+                            height: 10,
                           ),
                           Text(
                             'Press to Begin',

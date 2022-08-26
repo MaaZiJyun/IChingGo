@@ -199,4 +199,34 @@ class Hexagram {
   String getOpHexScript() {
     return transferHexToScript(getOpHexInByte());
   }
+
+  int getNumOfChanger(){
+    int result = 0;
+    for (var num in content) {
+      if (num>7) {
+        result++;
+      }
+    }
+    return result;
+  }
+
+  List<int> getIndexsOfChangers(){
+    List<int> list = [];
+    for (var i = 0; i < content.length; i++) {
+      if (content.elementAt(i)>7) {
+        list.add(i);
+      }
+    }
+    return list;
+  }
+
+  List<int> getIndexsOfNonChangers(){
+    List<int> list = [];
+    for (var i = 0; i < content.length; i++) {
+      if (content.elementAt(i)<8) {
+        list.add(i);
+      }
+    }
+    return list;
+  }
 }
